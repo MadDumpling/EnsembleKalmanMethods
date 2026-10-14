@@ -167,9 +167,5 @@ cython_debug/
 #  option (not recommended) you can uncomment the following to ignore the entire idea folder.
 #.idea/
 
-# Running the Script
-requirements.txt
-run_all.ps1
-
 # Visual Studio
 .vs/
