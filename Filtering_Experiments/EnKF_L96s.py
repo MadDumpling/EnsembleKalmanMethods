@@ -26,7 +26,7 @@ class Psi:
         self.TAU = TAU
     
     def forward(self, v):
-        # ensure v is a 1D numpy float array
+        # ensure y0 is a 1D numpy float array
         y0 = np.asarray(v, dtype=float).ravel()
         try:
             sol = scint.solve_ivp(
