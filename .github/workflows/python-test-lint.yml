@@ -26,6 +26,14 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
           python -m pip install flake8 pytest
+      
+      - name: Test with pytest
+        run: |
+          if find . -type f \( -name 'test_*.py' -o -name '*_test.py' \) | grep -q .; then
+            pytest
+          else
+            echo "No pytest test files found; skipping pytest."
+          fi
 
       - name: Lint with flake8 (syntax/import checks)
         run: |
@@ -35,10 +43,3 @@ jobs:
         run: |
           flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
 
-      - name: Test with pytest
-        run: |
-          if find . -type f \( -name 'test_*.py' -o -name '*_test.py' \) | grep -q .; then
-            pytest
-          else
-            echo "No pytest test files found; skipping pytest."
-          fi
