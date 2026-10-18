@@ -1,4 +1,4 @@
-#test
+#test workflow 2
 from Lorenz96.L96_multiscale import L96M
 
 def test_l96_constructs():
