@@ -2,9 +2,13 @@ name: Python application
 
 on:
   push:
-    branches: ["IntegrateTesting"]
+    branches:
+      - main
+      - IntegrateTesting
   pull_request:
-    branches: ["IntegrateTesting"]
+    branches:
+      - main
+      - IntegrateTesting
 
 permissions:
   contents: read
