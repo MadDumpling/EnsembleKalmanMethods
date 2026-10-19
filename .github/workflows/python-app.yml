@@ -33,6 +33,18 @@ jobs:
           if [ -f requirements.txt ]; then python -m pip install -r requirements.txt; fi
           python -m pip install flake8 pytest
 
+      - name: Provide minimal closure.joblib for tests
+        run: |
+          python - <<'PY'
+          from sklearn.gaussian_process import GaussianProcessRegressor
+          from joblib import dump
+          import os
+          os.makedirs('Lorenz96', exist_ok=True)
+          gp = GaussianProcessRegressor()
+          dump(gp, 'Lorenz96/closure.joblib')
+          print('Wrote Lorenz96/closure.joblib')
+          PY
+
       - name: Lint with flake8 (syntax/import checks)
         run: |
           flake8 . --count --select=E9,F63,F7 --show-source --statistics
